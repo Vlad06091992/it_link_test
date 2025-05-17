@@ -15,5 +15,5 @@ export class ColorsEntity {
   c_rgb: string;
 
   @Column()
-  createdAt: Date;
+  created_at: Date;
 }
