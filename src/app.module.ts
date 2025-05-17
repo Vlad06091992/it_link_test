@@ -5,6 +5,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GraphQLModule } from '@nestjs/graphql';
 import { UserModule } from 'src/features/users/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ColorsEntity } from 'src/features/colors/entity/colors.entity';
+import { ColorsModule } from 'src/features/colors/colors.module';
 
 @Module({
   imports: [
@@ -19,11 +21,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       username: 'it_link',
       password: '12345',
       database: 'it_link',
-      entities: [],
-      autoLoadEntities: true,
+      entities: [ColorsEntity],
+      autoLoadEntities: false,
       synchronize: true,
     }),
     UserModule,
+    ColorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
