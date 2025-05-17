@@ -1,9 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { InputType } from '@nestjs/graphql';
 
 @Entity({ name: 'v_color' })
 export class ColorsEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn('increment')
+  public id: number;
 
   @Column()
   c_name: string;
