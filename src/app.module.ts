@@ -36,7 +36,7 @@ type ErrorMessage = {
       port: 5432,
       username: 'it_link',
       password: '12345',
-      database: 'it_link',
+      database: 'it_link_dev',
       entities: [ColorsEntity],
       autoLoadEntities: false,
       synchronize: true,
