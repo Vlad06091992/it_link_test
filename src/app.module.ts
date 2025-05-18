@@ -5,11 +5,30 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ColorsEntity } from 'src/features/colors/entity/colors.entity';
 import { ColorsModule } from 'src/features/colors/colors.module';
 
+type ErrorMessage = {
+  code: string;
+  message: string;
+};
+
 @Module({
   imports: [
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: true,
+      formatError: (error): ErrorMessage => {
+        const originalError = error.extensions?.originalError as Error;
+
+        if (!originalError) {
+          return {
+            message: error.message,
+            code: error.extensions?.code as string,
+          };
+        }
+        return {
+          message: originalError.message,
+          code: error.extensions?.code as string,
+        };
+      },
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
