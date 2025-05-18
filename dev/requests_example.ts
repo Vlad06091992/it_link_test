@@ -1,4 +1,4 @@
-// ---- query ---------
+// ---- queries ---------
 
 // get colors
 
@@ -34,7 +34,7 @@
 //   }
 // }
 
-// ---- mutation ---------
+// ---- mutations ---------
 
 // add color
 
