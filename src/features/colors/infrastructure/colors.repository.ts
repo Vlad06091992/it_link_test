@@ -10,8 +10,10 @@ export class ColorsRepository {
     @InjectRepository(ColorsEntity) private repo: Repository<ColorsEntity>,
   ) {}
 
-  async findAll() {
-    return await this.repo
+  async findAll(pageNumber: number) {
+    const skip = (+pageNumber - 1) * +5;
+
+    const query = this.repo
       .createQueryBuilder('c')
       .select([
         'id',
@@ -19,8 +21,16 @@ export class ColorsRepository {
         'c_rgb as rgb',
         'c_hex as hex',
         'created_at',
-      ])
-      .getRawMany();
+      ]);
+
+    if (pageNumber) {
+      query.skip(+skip);
+      query.take(+5);
+    }
+
+    query.orderBy('c.created_at', 'DESC');
+
+    return await query.getRawMany();
   }
 
   async findByName(name: string) {

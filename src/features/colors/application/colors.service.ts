@@ -6,8 +6,8 @@ import { ColorCreateOrUpdateDTO } from '../model/colors.model';
 export class ColorsService {
   constructor(@Inject() protected repo: ColorsRepository) {}
 
-  async findAll() {
-    return await this.repo.findAll();
+  async findAll(pageNumber: number) {
+    return await this.repo.findAll(pageNumber);
   }
 
   async findColorByName(name: string) {
@@ -24,8 +24,14 @@ export class ColorsService {
 
   async createColor(color: ColorCreateOrUpdateDTO) {
     const res = await this.repo.createColor(color);
-    let newVar = { id:res.id,created_at: res.created_at, name: res.c_name, hex: res.c_hex, rgb: res.c_rgb };
-    debugger
+    const newVar = {
+      id: res.id,
+      created_at: res.created_at,
+      name: res.c_name,
+      hex: res.c_hex,
+      rgb: res.c_rgb,
+    };
+    debugger;
     return newVar;
   }
 }

@@ -8,15 +8,11 @@ import { ColorCreateOrUpdateDTO } from '../model/colors.model';
 export class ColorsResolver {
   constructor(@Inject() private colorsService: ColorsService) {}
 
-  // @Query(() => [Colors])
-  // async getColors(@Args('page', { defaultValue: 1 }) page: number) {
-  //   return this.colorsService.findAllPaginated(page);
-  // }
-
   @Query(() => [Colors])
-  async getAllColors() {
-    debugger;
-    return await this.colorsService.findAll();
+  async getAllColors(
+    @Args({ name: 'pageNumber', nullable: true }) pageNumber?: number,
+  ) {
+    return await this.colorsService.findAll(pageNumber);
   }
 
   @Query(() => Colors)
