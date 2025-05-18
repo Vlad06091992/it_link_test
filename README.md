@@ -30,6 +30,10 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Usage
+
 ```bash
-local url: http://localhost:3000/graphql
+local url:http://localhost:3000/graphql
+
+Данные для того, чтобы наполнить БД, и примеры graphql запросов можно найти в папке /dev
 ```
