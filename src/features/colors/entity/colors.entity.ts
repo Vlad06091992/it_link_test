@@ -1,5 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { InputType } from '@nestjs/graphql';
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: 'v_color' })
 export class ColorsEntity {

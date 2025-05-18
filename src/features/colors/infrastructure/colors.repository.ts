@@ -11,27 +11,40 @@ export class ColorsRepository {
   ) {}
 
   async findAll() {
-    return await this.repo.createQueryBuilder('c').getMany();
+    return await this.repo
+      .createQueryBuilder('c')
+      .select([
+        'id',
+        'c_name as name',
+        'c_rgb as rgb',
+        'c_hex as hex',
+        'created_at',
+      ])
+      .getRawMany();
   }
 
   async findByName(name: string) {
     return await this.repo
       .createQueryBuilder('c')
+      .select([
+        'id',
+        'c_name as name',
+        'c_rgb as rgb',
+        'c_hex as hex',
+        'created_at',
+      ])
       .where('c.c_name = :name', { name })
-      .getOne();
+      .getRawOne();
   }
 
-  async updateById(
-    { c_rgb, c_name, c_hex }: ColorCreateOrUpdateDTO,
-    id: number,
-  ) {
+  async updateById({ rgb, name, hex }: ColorCreateOrUpdateDTO, id: number) {
     const updateResult = await this.repo
       .createQueryBuilder('c')
       .update(ColorsEntity)
       .set({
-        c_hex,
-        c_name,
-        c_rgb,
+        c_hex: hex,
+        c_name: name,
+        c_rgb: rgb,
       })
       .where('id = :id', { id })
       .execute();
@@ -49,8 +62,15 @@ export class ColorsRepository {
     return deleteResult.affected > 0;
   }
 
-  async createColor(colorData: ColorCreateOrUpdateDTO): Promise<any> {
-    const color = { ...colorData, created_at: new Date() };
+  async createColor({ rgb, hex, name }: ColorCreateOrUpdateDTO): Promise<any> {
+    const color = {
+      ...{
+        c_hex: hex,
+        c_name: name,
+        c_rgb: rgb,
+      },
+      created_at: new Date(),
+    };
     const insertResult = await this.repo
       .createQueryBuilder()
       .insert()

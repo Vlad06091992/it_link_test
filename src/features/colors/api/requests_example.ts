@@ -2,25 +2,27 @@
 
 // mutation AddColor {
 //   addColor(
-//     colorData: { c_name: "Черный", c_hex: "#FF0000", c_rgb: "rgb(255, 255, 0)" }
+//     colorData: { name: "Черный", hex: "#FF0000", rgb: "rgb(255, 255, 0)" }
 // ) {
-//     c_name
-//     c_rgb
+//     id
+//     name
+//     rgb
+//     hex
 //     created_at
 //   }
 // }
 
 // get colors
 
-// query GetAllColors {
-//   getAllColors {
-//     id
-//     c_name
-//     c_rgb
-//     c_hex
-//     created_at
-//   }
-// }
+  // query GetAllColors {
+  //   getAllColors {
+  //     id
+  //     name
+  //     rgb
+  //     hex
+  //     created_at
+  //   }
+  // }
 
 //remove by id
 
@@ -31,7 +33,7 @@
 //update color
 
 // mutation UpdateColorById {
-//   updateColorById(id: 37, colorUpdateDTO:  { c_name: "Зеленый", c_hex: "#FF22000", c_rgb: "rgb(255, 255, 317)" })
+//   updateColorById(id: 37, colorUpdateDTO:  { name: "Зеленый", hex: "#FF22000", rgb: "rgb(255, 255, 317)" })
 // }
 
 //get color by name
@@ -39,9 +41,9 @@
 // query FindColorByName {
 //   findColorByName(name: "Зеленый") {
 //     id
-//     c_name
-//     c_rgb
-//     c_hex
+//     name
+//     rgb
+//     hex
 //     created_at
 //   }
 // }

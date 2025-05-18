@@ -5,26 +5,26 @@ export class Colors {
   id: string;
 
   @Field()
-  c_name: string;
+  name: string;
 
   @Field()
-  c_rgb: string;
+  rgb: string;
 
   @Field()
-  c_hex: string;
+  hex: string;
 
   @Field()
-  created_at: string;
+  created_at: Date;
 }
 
 @InputType()
 export class ColorCreateOrUpdateDTO {
   @Field()
-  c_name: string;
+  name: string;
 
   @Field()
-  c_rgb: string;
+  rgb: string;
 
   @Field()
-  c_hex: string;
+  hex: string;
 }

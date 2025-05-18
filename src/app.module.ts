@@ -21,6 +21,7 @@ import { ColorsModule } from 'src/features/colors/colors.module';
       entities: [ColorsEntity],
       autoLoadEntities: false,
       synchronize: true,
+      logging: true,
     }),
     ColorsModule,
   ],
