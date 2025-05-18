@@ -68,7 +68,6 @@ export class ColorsRepository {
       .from(ColorsEntity)
       .where('id = :id', { id })
       .execute();
-    console.log(deleteResult);
     return deleteResult.affected > 0;
   }
 

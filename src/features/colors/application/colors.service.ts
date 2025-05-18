@@ -23,15 +23,15 @@ export class ColorsService {
   }
 
   async createColor(color: ColorCreateOrUpdateDTO) {
-    const res = await this.repo.createColor(color);
-    const newVar = {
-      id: res.id,
-      created_at: res.created_at,
-      name: res.c_name,
-      hex: res.c_hex,
-      rgb: res.c_rgb,
+    const { id, created_at, c_name, c_rgb, c_hex } =
+      await this.repo.createColor(color);
+    const output = {
+      id,
+      created_at,
+      name: c_name,
+      hex: c_hex,
+      rgb: c_rgb,
     };
-    debugger;
-    return newVar;
+    return output;
   }
 }
